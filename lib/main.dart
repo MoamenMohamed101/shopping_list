@@ -122,6 +122,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: GridView.count(
+                physics: BouncingScrollPhysics(),
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
@@ -134,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                               image: AssetImage(list), fit: BoxFit.cover),
                         ),
                         child: Transform.translate(
-                          offset: Offset(50, -50),
+                          offset: const Offset(50, -50),
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
@@ -142,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             margin: const EdgeInsets.symmetric(
                                 horizontal: 65, vertical: 63),
-                            child: Icon(Icons.bookmark_border, size: 15),
+                            child: const Icon(Icons.bookmark_border, size: 15),
                           ),
                         ),
                       ),
