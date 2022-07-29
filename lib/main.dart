@@ -17,6 +17,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<String> listItem = [
+    'assets/images/two.jpg',
+    'assets/images/three.jpg',
+    'assets/images/four.jpg',
+    'assets/images/five.jpg',
+    'assets/images/one.jpg',
+    'assets/images/two.jpg',
+    'assets/images/three.jpg',
+    'assets/images/four.jpg',
+    'assets/images/five.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,11 +55,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: Container(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             Container(
+              width: double.infinity,
               height: 250,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -58,16 +71,85 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Container(
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
                   gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
+                    begin: Alignment.bottomRight,
                     colors: [
                       Colors.black.withOpacity(.4),
-                      Colors.black.withOpacity(.11),
+                      Colors.black.withOpacity(.2),
                     ],
                   ),
                 ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Text(
+                      'Lifestyle Sale',
+                      style: TextStyle(
+                        fontSize: 35,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      height: 50,
+                      child: Center(
+                        child: Text(
+                          'Shop Now',
+                          style: TextStyle(
+                              color: Colors.grey[900],
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                ),
               ),
-            )
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                children: listItem
+                    .map(
+                      (list) => Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: AssetImage(list), fit: BoxFit.cover),
+                        ),
+                        child: Transform.translate(
+                          offset: Offset(50, -50),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                            ),
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 65, vertical: 63),
+                            child: Icon(Icons.bookmark_border, size: 15),
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
           ],
         ),
       ),
